@@ -1,0 +1,50 @@
+.complete {
+  color: grey !important;
+  text-decoration: line-through;
+}
+.todo {
+    color: black;
+}
+.App {
+  font-size: 20px;
+  margin-top: 20%;
+  margin:  50px auto;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #eeeeee;
+  width: 300px;
+}
+.inputTodoItems > input {
+    width: 90%;
+    height: 30px;
+    margin: 10px 20px 15px 0;
+}
+.todoItems > img {
+    width: 30px;
+    margin: 0 20px;
+}
+.todoItems{
+    display: flex;
+    border: 1px solid #eeeeee;
+}
+.todoItems > p {
+    margin: 0;
+    padding: 10px 5px;
+}
+.todoItems:last-child{
+    border-bottom: none;
+}
+.inputTodoItems > img{
+    width: 30px;
+    margin: 0 20px;
+}
+.inputTodoItems{
+    display: flex;
+}
+.btn-all{
+    margin: 0 15px;
+}
+.divButton{
+    display: flex;
+    justify-content: space-between;
+}
