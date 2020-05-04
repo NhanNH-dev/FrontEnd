@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import ChildTodoItem from "./ChildTodoItem";
 import "./style.css";
 import add from "../../assets/add.svg";
 import _ from "lodash";
 function TodoItems() {
-  const [TodoItems, setTodoItems] = useState([]);
+  const [TodoItems, setTodoItems] = useState([
+    { name: "Nhan", isComplete: false },
+    { name: "Dang", isComplete: true },
+  ]);
   const [NewsToDoList, setNewsToDoList] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [status, setStatus] = useState("all");
@@ -19,21 +22,19 @@ function TodoItems() {
   //   this.updateStorage();
   // }
 
-  onItemClick = (item) => {
-    return (event) => {
-      const index = NewsToDoList.indexOf(item);
-      NewsToDoList[index].isComplete = !item.isComplete;
-      setNewsToDoList(NewsToDoList);
-    };
-  };
+  function onItemClick(item) {
+    const index = NewsToDoList.indexOf(item);
+    NewsToDoList[index].isComplete = !item.isComplete;
+    setNewsToDoList(NewsToDoList);
+  }
 
-  updateStorage = () => {
+  function updateStorage() {
     if (NewsToDoList != null) {
       localStorage.setItem("TodoItems", JSON.stringify(NewsToDoList));
     }
-  };
+  }
 
-  onKeyUp = (event) => {
+  function onKeyUp(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
       let text = event.target.value;
@@ -50,10 +51,11 @@ function TodoItems() {
       setTodoItems(TodoItems);
       setNewsToDoList(TodoItems);
     }
-  };
+  }
 
-  onClickedButton = (e) => {
-    setStatus(e.target.name),
+  function onClickedButton(e) {
+    return (
+      setStatus(e.target.name),
       () => {
         if (status === "all") {
           setNewsToDoList(TodoItems);
@@ -66,8 +68,9 @@ function TodoItems() {
             )
           );
         }
-      };
-  };
+      }
+    );
+  }
 
   const renderList =
     NewsToDoList &&
@@ -77,7 +80,7 @@ function TodoItems() {
         key={index}
         item={item}
         id={index}
-        onItemClick={this.onItemClick(item)}
+        onItemClick={onItemClick(item)}
       />
     ));
   return (
@@ -124,3 +127,4 @@ function TodoItems() {
     </div>
   );
 }
+export default TodoItems;

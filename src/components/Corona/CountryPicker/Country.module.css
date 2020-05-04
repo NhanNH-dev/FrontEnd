@@ -1,0 +1,6 @@
+.container {
+  margin: 20px auto !important ;
+  padding-top: 40px;
+  display: flex !important;
+  width: 100px;
+}
